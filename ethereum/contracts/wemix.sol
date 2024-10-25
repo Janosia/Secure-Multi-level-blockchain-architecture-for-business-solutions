@@ -13,6 +13,7 @@ import {IERC20} from "@chainlink/contracts-ccip/src/v0.8/vendor/openzeppelin-sol
 /// Validate transactions from beta layer and send information back to beta layer 
 
 contract MiddleLayer is CCIPReceiver, OwnerIsCreator {
+    
     // EVENTS DEFINED
     event SuccessfullClassification(bytes32, address, string, uint); // when transactions has been successfully added to respective chain
     // event SuccessfullValidation(); // when transaction has been validated successfully
@@ -25,6 +26,8 @@ contract MiddleLayer is CCIPReceiver, OwnerIsCreator {
     error FailureinWithdrawl(); // when transaction fails to withdraw tokens from sender
     error NothingtoWithdraw(); // when sender has no funds left
     error MessageIDNotFound(); // when Transaction message is not found
+    error SenderNotAllowlisted(); // when senders are not allowed to initiate cross chain transactions
+    error SourceChainNotAllowlisted(); // when chains are not allowed to send transactions
 
     // something similar needs to be sent from bottom layer
     struct TransactionMessage {
@@ -49,8 +52,18 @@ contract MiddleLayer is CCIPReceiver, OwnerIsCreator {
     bytes32[] public TxMessages; // store messages
     mapping(string => uint64) ChainAddress; // ["Tx Type" : chain Address] mapping
     // string [] public TxType; // keeps track of existing tx types
-    address public _router;
-
+    uint64[] public allowlistedSourceChains;
+    address[] public allowlistedSenders;
+    address public _router = 0x7798b795Fde864f4Cd1b124a38Ba9619B7F8A442; // taken from CCIP website
+     
+    // Modifier to override definitions
+    modifier onlyAllowlisted(uint64 _sourceChainSelector, address _sender) {
+    if (!allowlistedSourceChains[_sourceChainSelector])
+        revert SourceChainNotAllowlisted(_sourceChainSelector);
+    if (!allowlistedSenders[_sender]) 
+        revert SenderNotAllowlisted(_sender);
+    _;
+}
     function buildmessage(
         TransactionMessage memory message
     ) internal returns (string memory) {
@@ -94,7 +107,7 @@ contract MiddleLayer is CCIPReceiver, OwnerIsCreator {
             data: abi.encode(message), // ABI-encoded string message
             tokenAmounts: new Client.EVMTokenAmount[](0), // Empty array indicating no tokens are being sent
             extraArgs: Client._argsToBytes(
-                Client.EVMExtraArgsV1({gasLimit: 400_000, strict: false}) // Additional arguments, setting gas limit and non-strict sequency mode
+                Client.EVMExtraArgsV1({gasLimit: 400_000}) //setting gas limit mode is strict by default
             ),
             feeToken: address(0) // Setting feeToken to zero address, indicating native asset will be used for fees
         });
@@ -111,7 +124,24 @@ contract MiddleLayer is CCIPReceiver, OwnerIsCreator {
         emit SuccessfullClassification(messageId, rcv, message, fees);
     }
 
-    // function _ccipReceive(
-    //     Client.Any2EVMMessage memory message
-    // ) internal virtual override {}
+    function _ccipReceive(
+        Client.Any2EVMMessage memory any2EvmMessage
+    )
+        internal
+        override
+        onlyAllowlisted(
+            any2EvmMessage.sourceChainSelector,
+            abi.decode(any2EvmMessage.sender, (address))
+        ) // Make sure source chain and sender are allowlisted
+    {
+        s_lastReceivedMessageId = any2EvmMessage.messageId; // fetch the messageId
+        s_lastReceivedText = abi.decode(any2EvmMessage.data, (string)); // abi-decoding of the sent text
+
+        // emit MessageReceived(
+        //     any2EvmMessage.messageId,
+        //     any2EvmMessage.sourceChainSelector, // fetch the source chain identifier (aka selector)
+        //     abi.decode(any2EvmMessage.sender, (address)), // abi-decoding of the sender address,
+        //     abi.decode(any2EvmMessage.data, (string))
+        // );
+    }
 }
