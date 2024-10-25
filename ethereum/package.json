@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@chainlink/contracts-ccip": "^1.5.0-beta.0",
     "@openzeppelin/contracts": "^5.0.2",
     "hardhat": "^2.22.12",
     "web3": "^4.13.0"
