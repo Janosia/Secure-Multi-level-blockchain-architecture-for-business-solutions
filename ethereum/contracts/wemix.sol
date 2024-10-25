@@ -17,7 +17,7 @@ contract MiddleLayer is CCIPReceiver, OwnerIsCreator {
     // EVENTS DEFINED
     event SuccessfullClassification(bytes32, address, string, uint); // when transactions has been successfully added to respective chain
     // event SuccessfullValidation(); // when transaction has been validated successfully
-    event TransactionRecieved(); // when transaction is recieved from bottom layer
+    event TransactionRecieved(bytes32, string); // when transaction is recieved from bottom layer
     event TransactionSent(); // when transaction is sent to bottom layer
     // event AlertToAlphaLayer() ; // when we alert alpha layer about any mishaps
 
@@ -26,8 +26,8 @@ contract MiddleLayer is CCIPReceiver, OwnerIsCreator {
     error FailureinWithdrawl(); // when transaction fails to withdraw tokens from sender
     error NothingtoWithdraw(); // when sender has no funds left
     error MessageIDNotFound(); // when Transaction message is not found
-    error SenderNotAllowlisted(); // when senders are not allowed to initiate cross chain transactions
-    error SourceChainNotAllowlisted(); // when chains are not allowed to send transactions
+    error SenderNotAllowlisted(address); // when senders are not allowed to initiate cross chain transactions
+    error SourceChainNotAllowlisted(uint64); // when chains are not allowed to send transactions
 
     // something similar needs to be sent from bottom layer
     struct TransactionMessage {
@@ -52,15 +52,15 @@ contract MiddleLayer is CCIPReceiver, OwnerIsCreator {
     bytes32[] public TxMessages; // store messages
     mapping(string => uint64) ChainAddress; // ["Tx Type" : chain Address] mapping
     // string [] public TxType; // keeps track of existing tx types
-    uint64[] public allowlistedSourceChains;
-    address[] public allowlistedSenders;
+    mapping (uint64 => uint) public allowlistedSourceChains;
+    mapping (address => uint) public allowlistedSenders;
     address public _router = 0x7798b795Fde864f4Cd1b124a38Ba9619B7F8A442; // taken from CCIP website
      
     // Modifier to override definitions
     modifier onlyAllowlisted(uint64 _sourceChainSelector, address _sender) {
-    if (!allowlistedSourceChains[_sourceChainSelector])
+    if (allowlistedSourceChains[_sourceChainSelector] > 0)
         revert SourceChainNotAllowlisted(_sourceChainSelector);
-    if (!allowlistedSenders[_sender]) 
+    if (allowlistedSenders[_sender]>0) 
         revert SenderNotAllowlisted(_sender);
     _;
 }
@@ -124,24 +124,14 @@ contract MiddleLayer is CCIPReceiver, OwnerIsCreator {
         emit SuccessfullClassification(messageId, rcv, message, fees);
     }
 
-    function _ccipReceive(
-        Client.Any2EVMMessage memory any2EvmMessage
-    )
-        internal
-        override
+    function _ccipReceive(Client.Any2EVMMessage memory any2EvmMessage)internal override
         onlyAllowlisted(
             any2EvmMessage.sourceChainSelector,
             abi.decode(any2EvmMessage.sender, (address))
         ) // Make sure source chain and sender are allowlisted
     {
-        s_lastReceivedMessageId = any2EvmMessage.messageId; // fetch the messageId
-        s_lastReceivedText = abi.decode(any2EvmMessage.data, (string)); // abi-decoding of the sent text
-
-        // emit MessageReceived(
-        //     any2EvmMessage.messageId,
-        //     any2EvmMessage.sourceChainSelector, // fetch the source chain identifier (aka selector)
-        //     abi.decode(any2EvmMessage.sender, (address)), // abi-decoding of the sender address,
-        //     abi.decode(any2EvmMessage.data, (string))
-        // );
+        bytes32 s_lastReceivedMessageId = any2EvmMessage.messageId; // fetch the messageId
+        string memory s_lastReceivedText = abi.decode(any2EvmMessage.data, (string)); // abi-decoding of the sent text
+        emit TransactionRecieved (s_lastReceivedMessageId,s_lastReceivedText);
     }
 }
