@@ -1,6 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
+///  npm install @chainlink/contracts-ccip@1.5.0-beta.0 - for imports to work
+
+import {IRouterClient} from "@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IRouterClient.sol";
+import {OwnerIsCreator} from "cross-not-official/contracts/OwnerIsCreator.sol";
+import {Client} from "@chainlink/contracts-ccip/src/v0.8/ccip/libraries/Client.sol";
+import {CCIPReceiver} from "@chainlink/contracts-ccip/src/v0.8/ccip/applications/CCIPReceiver.sol";
+import {IERC20} from "cross-not-official/vendor/openzeppelin-solidity/v4.8.0/token/ERC20/IERC20.sol";
+
 
 ///@title Classify the transactions from beta layer into different chains (3 for our use case)
 /// Validate transactions from beta layer and send information back to beta layer 
@@ -22,11 +30,17 @@ contract MiddleLayer {
     struct TransactionMessage {
         bytes32 MessageID; // ID used for mapping
         string  TransactionType;  // helps in selecting chain
-        address sender; 
+        address sender;
         address reciever;
     }
 
-    mapping(bytes32 => TransactionMessage) MessageSession;  // keep track of messages interchanged
-    bytes32[] public Messages; // store messages  
+    struct Message{
+        uint64 Sourcechain;  // address chain 
+        string SenderDepartment; // Department Name which initialised transaction
+        string RecieverDepartment; // Department Name which will recieve transaction   
+    }
+
+    mapping(bytes32 => TransactionMessage) TxSession;  // keep track of messages interchanged
+    bytes32[] public TxMessages; // store messages  
 
 }
