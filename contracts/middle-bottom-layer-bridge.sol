@@ -13,8 +13,7 @@ import {IERC20} from "@chainlink/contracts-ccip/src/v0.8/vendor/openzeppelin-sol
 import {SafeERC20} from "@chainlink/contracts-ccip/src/v0.8/vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/utils/SafeERC20.sol";
 
 
-///@title Classify the transactions from beta layer into different chains (3 for our use case)
-/// Validate transactions from beta layer and send information back to beta layer 
+///@title allow message transmission between middle and bottom layer 
 
 contract MiddleLayer is CCIPReceiver, OwnerIsCreator{
     
@@ -29,8 +28,7 @@ contract MiddleLayer is CCIPReceiver, OwnerIsCreator{
     error NotEnoughBalance(uint256, uint256);
     
 
-    bytes32 private inter_layer_last_message;
-    mapping(string => uint64) ChainAddress; 
+    bytes32 private inter_layer_last_message; 
     
     IERC20 private s_linkToken;
 
