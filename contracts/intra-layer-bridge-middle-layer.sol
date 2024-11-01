@@ -13,22 +13,20 @@ import {IERC20} from "@chainlink/contracts-ccip/src/v0.8/vendor/openzeppelin-sol
 import {SafeERC20} from "@chainlink/contracts-ccip/src/v0.8/vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/utils/SafeERC20.sol";
 
 
-///@title allow message transmission between middle and bottom layer 
+///@title Classify the transactions from beta layer into different chains (3 for our use case)
+/// Validate transactions from beta layer and send information back to beta layer 
 
-contract MiddleLayer is CCIPReceiver, OwnerIsCreator{
+contract IntraMiddleLayer is CCIPReceiver, OwnerIsCreator{
     
     // EVENTS 
-    event TransactionRecieved(bytes32, string); // transaction request is recieved from bottom layer
-    event TransactionSent(string, uint64); // approved transaction is sent to bottom layer
-
+    event SuccessfulClassification(string, uint64, string);
+    event TransactionRecieved(bytes32, string);
     // ERRORS 
-    error FailureinWithdrawl(); // transaction fails to withdraw tokens from sender
-    error NothingtoWithdraw(); // sender has no funds left
-    error MessageIDNotFound(); // Transaction message ID is not found
+    error NoChainExists(string);
     error NotEnoughBalance(uint256, uint256);
-    
 
-    bytes32 private inter_layer_last_message; 
+    bytes32 private intra_layer_last_message;
+    mapping(string => uint64) ChainAddress;  
     
     IERC20 private s_linkToken;
 
@@ -40,10 +38,16 @@ contract MiddleLayer is CCIPReceiver, OwnerIsCreator{
         s_linkToken = IERC20(_link);
     }
 
-    function sendMessagePayLINK(address _receiver,string calldata _text, uint64 _bottomLayerChain)
+    function findChain(string calldata TxType) view internal returns(uint64){
+        if(ChainAddress[TxType]>0) revert NoChainExists("No chain exists for this transaction");
+        return ChainAddress[TxType];
+    }
+    ///@param TxType is used to find chain where tx will be stored
+    function sendMessagePayLINK(address _receiver,string calldata _text, string calldata TxType)
         external
         returns (bytes32 messageId)
     {
+        uint64 _chainID = findChain(TxType);
         // Create an EVM2AnyMessage struct in memory with necessary information for sending a cross-chain message
         Client.EVM2AnyMessage memory evm2AnyMessage = _buildCCIPMessage(
             _receiver,
@@ -55,18 +59,18 @@ contract MiddleLayer is CCIPReceiver, OwnerIsCreator{
         IRouterClient router = IRouterClient(this.getRouter());
 
         // Get the fee required to send the CCIP message
-        uint256 fees = router.getFee(_bottomLayerChain, evm2AnyMessage);
+        uint256 fees = router.getFee(_chainID, evm2AnyMessage);
 
         if (fees > s_linkToken.balanceOf(address(this)))
             revert NotEnoughBalance(s_linkToken.balanceOf(address(this)), fees);
 
         // approve the Router to transfer LINK tokens on contract's behalf. It will spend the fees in LINK
         s_linkToken.approve(address(router), fees);
-
+        
         // Send another message to bottom layer (inter-layer bridging) and use it 
-        inter_layer_last_message = router.ccipSend(_bottomLayerChain, evm2AnyMessage);
+        intra_layer_last_message = router.ccipSend(_chainID, evm2AnyMessage);
         // Emit an event with message details
-        emit TransactionSent("Transaction sent to Bottom Layer to dept and id", _bottomLayerChain);
+        emit SuccessfulClassification(TxType, _chainID, "Stored");
 
         // Return the CCIP message ID
         return messageId;
