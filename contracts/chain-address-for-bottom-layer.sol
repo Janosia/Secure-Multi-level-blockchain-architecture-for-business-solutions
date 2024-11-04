@@ -9,4 +9,9 @@ contract ChainAddressBottomLayer{
         ChainsBottomLayer[dept] = chain;
         return true;
     }
+
+    function returnAddressBottom(string calldata dept) public view returns(uint64){
+        require(ChainsBottomLayer[dept]!=0, "No such dept exists" );
+        return (ChainsBottomLayer[dept]);
+    }
 }
