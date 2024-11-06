@@ -7,10 +7,6 @@
 !.vscode/*.code-snippets
 
 #files added to test app; should be removed once f
-./node_modules
-./package-lock.json
-./package.json
-./truffle-config.json
 # Local History for Visual Studio Code
 .history/
 
@@ -21,3 +17,7 @@
 # Ignore all local history of files
 .history
 .ionide
+node_modules
+package-lock.json
+package.json
+truffle-config.json
