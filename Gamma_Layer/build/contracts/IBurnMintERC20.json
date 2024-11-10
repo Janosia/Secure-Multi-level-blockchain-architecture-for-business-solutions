@@ -1,0 +1,771 @@
+{
+  "contractName": "IBurnMintERC20",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "burn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "burn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "burnFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burnFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"events\":{\"Approval(address,address,uint256)\":{\"details\":\"Emitted when the allowance of a `spender` for an `owner` is set by a call to {approve}. `value` is the new allowance.\"},\"Transfer(address,address,uint256)\":{\"details\":\"Emitted when `value` tokens are moved from one account (`from`) to another (`to`). Note that `value` may be zero.\"}},\"kind\":\"dev\",\"methods\":{\"allowance(address,address)\":{\"details\":\"Returns the remaining number of tokens that `spender` will be allowed to spend on behalf of `owner` through {transferFrom}. This is zero by default. This value changes when {approve} or {transferFrom} are called.\"},\"approve(address,uint256)\":{\"details\":\"Sets `amount` as the allowance of `spender` over the caller's tokens. Returns a boolean value indicating whether the operation succeeded. IMPORTANT: Beware that changing an allowance with this method brings the risk that someone may use both the old and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this race condition is to first reduce the spender's allowance to 0 and set the desired value afterwards: https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729 Emits an {Approval} event.\"},\"balanceOf(address)\":{\"details\":\"Returns the amount of tokens owned by `account`.\"},\"burn(address,uint256)\":{\"details\":\"this function decreases the total supply.\",\"params\":{\"account\":\"The address to burn tokens from.\",\"amount\":\"The number of tokens to be burned.\"}},\"burn(uint256)\":{\"details\":\"this function decreases the total supply.\",\"params\":{\"amount\":\"The number of tokens to be burned.\"}},\"burnFrom(address,uint256)\":{\"details\":\"this function decreases the total supply.\",\"params\":{\"account\":\"The address to burn tokens from.\",\"amount\":\"The number of tokens to be burned.\"}},\"mint(address,uint256)\":{\"details\":\"this function increases the total supply.\",\"params\":{\"account\":\"The address to mint the new tokens to.\",\"amount\":\"The number of tokens to be minted.\"}},\"totalSupply()\":{\"details\":\"Returns the amount of tokens in existence.\"},\"transfer(address,uint256)\":{\"details\":\"Moves `amount` tokens from the caller's account to `to`. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.\"},\"transferFrom(address,address,uint256)\":{\"details\":\"Moves `amount` tokens from `from` to `to` using the allowance mechanism. `amount` is then deducted from the caller's allowance. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"burn(address,uint256)\":{\"notice\":\"Burns tokens from a given address..\"},\"burn(uint256)\":{\"notice\":\"Burns tokens from the sender.\"},\"burnFrom(address,uint256)\":{\"notice\":\"Burns tokens from a given address..\"},\"mint(address,uint256)\":{\"notice\":\"Mints new tokens for a given address.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@chainlink/contracts-ccip/src/v0.8/shared/token/ERC20/IBurnMintERC20.sol\":\"IBurnMintERC20\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@chainlink/contracts-ccip/src/v0.8/shared/token/ERC20/IBurnMintERC20.sol\":{\"keccak256\":\"0xbb8f9a00d41bbc516c691a4685c07c291b978fff98d133a50bb4773a6fc2b19f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://28fc726d16cc887f542040d198f010b79b46beb48be3317aa2254126f89900fa\",\"dweb:/ipfs/QmUjL8MCRcenLQossX64dAk71q2JNgEzia3QA1iRNgdXc7\"]},\"@chainlink/contracts-ccip/src/v0.8/vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x527e858729af8197f6c8f99554d32bfc4f5a72b15975489c94809363d7ae522f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6828dfa867eaff18f383aad4ca4b5aaedb93109023d74aaf418fee6c06e556c2\",\"dweb:/ipfs/QmXSQ9WnaJ6Ba9gvKvgNxDY7sa7ATJ9V55uwGSGCpBuJKu\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport {IERC20} from \"../../../vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/IERC20.sol\";\n\ninterface IBurnMintERC20 is IERC20 {\n  /// @notice Mints new tokens for a given address.\n  /// @param account The address to mint the new tokens to.\n  /// @param amount The number of tokens to be minted.\n  /// @dev this function increases the total supply.\n  function mint(address account, uint256 amount) external;\n\n  /// @notice Burns tokens from the sender.\n  /// @param amount The number of tokens to be burned.\n  /// @dev this function decreases the total supply.\n  function burn(uint256 amount) external;\n\n  /// @notice Burns tokens from a given address..\n  /// @param account The address to burn tokens from.\n  /// @param amount The number of tokens to be burned.\n  /// @dev this function decreases the total supply.\n  function burn(address account, uint256 amount) external;\n\n  /// @notice Burns tokens from a given address..\n  /// @param account The address to burn tokens from.\n  /// @param amount The number of tokens to be burned.\n  /// @dev this function decreases the total supply.\n  function burnFrom(address account, uint256 amount) external;\n}\n",
+  "sourcePath": "@chainlink\\contracts-ccip\\src\\v0.8\\shared\\token\\ERC20\\IBurnMintERC20.sol",
+  "ast": {
+    "absolutePath": "@chainlink/contracts-ccip/src/v0.8/shared/token/ERC20/IBurnMintERC20.sol",
+    "exportedSymbols": {
+      "IBurnMintERC20": [
+        1979
+      ],
+      "IERC20": [
+        3255
+      ]
+    },
+    "id": 1980,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1944,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:16"
+      },
+      {
+        "absolutePath": "@chainlink/contracts-ccip/src/v0.8/vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/IERC20.sol",
+        "file": "../../../vendor/openzeppelin-solidity/v4.8.3/contracts/token/ERC20/IERC20.sol",
+        "id": 1946,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 1980,
+        "sourceUnit": 3256,
+        "src": "57:101:16",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 1945,
+              "name": "IERC20",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 3255,
+              "src": "65:6:16",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 1947,
+              "name": "IERC20",
+              "nameLocations": [
+                "188:6:16"
+              ],
+              "nodeType": "IdentifierPath",
+              "referencedDeclaration": 3255,
+              "src": "188:6:16"
+            },
+            "id": 1948,
+            "nodeType": "InheritanceSpecifier",
+            "src": "188:6:16"
+          }
+        ],
+        "canonicalName": "IBurnMintERC20",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 1979,
+        "linearizedBaseContracts": [
+          1979,
+          3255
+        ],
+        "name": "IBurnMintERC20",
+        "nameLocation": "170:14:16",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 1949,
+              "nodeType": "StructuredDocumentation",
+              "src": "199:217:16",
+              "text": "@notice Mints new tokens for a given address.\n @param account The address to mint the new tokens to.\n @param amount The number of tokens to be minted.\n @dev this function increases the total supply."
+            },
+            "functionSelector": "40c10f19",
+            "id": 1956,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mint",
+            "nameLocation": "428:4:16",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1954,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1951,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nameLocation": "441:7:16",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1956,
+                  "src": "433:15:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1950,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "433:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1953,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "458:6:16",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1956,
+                  "src": "450:14:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1952,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "450:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "432:33:16"
+            },
+            "returnParameters": {
+              "id": 1955,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "474:0:16"
+            },
+            "scope": 1979,
+            "src": "419:56:16",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1957,
+              "nodeType": "StructuredDocumentation",
+              "src": "479:149:16",
+              "text": "@notice Burns tokens from the sender.\n @param amount The number of tokens to be burned.\n @dev this function decreases the total supply."
+            },
+            "functionSelector": "42966c68",
+            "id": 1962,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "burn",
+            "nameLocation": "640:4:16",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1960,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1959,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "653:6:16",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1962,
+                  "src": "645:14:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1958,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "645:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "644:16:16"
+            },
+            "returnParameters": {
+              "id": 1961,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "669:0:16"
+            },
+            "scope": 1979,
+            "src": "631:39:16",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1963,
+              "nodeType": "StructuredDocumentation",
+              "src": "674:209:16",
+              "text": "@notice Burns tokens from a given address..\n @param account The address to burn tokens from.\n @param amount The number of tokens to be burned.\n @dev this function decreases the total supply."
+            },
+            "functionSelector": "9dc29fac",
+            "id": 1970,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "burn",
+            "nameLocation": "895:4:16",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1968,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1965,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nameLocation": "908:7:16",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1970,
+                  "src": "900:15:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1964,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "900:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1967,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "925:6:16",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1970,
+                  "src": "917:14:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1966,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "917:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "899:33:16"
+            },
+            "returnParameters": {
+              "id": 1969,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "941:0:16"
+            },
+            "scope": 1979,
+            "src": "886:56:16",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 1971,
+              "nodeType": "StructuredDocumentation",
+              "src": "946:209:16",
+              "text": "@notice Burns tokens from a given address..\n @param account The address to burn tokens from.\n @param amount The number of tokens to be burned.\n @dev this function decreases the total supply."
+            },
+            "functionSelector": "79cc6790",
+            "id": 1978,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "burnFrom",
+            "nameLocation": "1167:8:16",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1976,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1973,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nameLocation": "1184:7:16",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1978,
+                  "src": "1176:15:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1972,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1176:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1975,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1201:6:16",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1978,
+                  "src": "1193:14:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1974,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1193:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1175:33:16"
+            },
+            "returnParameters": {
+              "id": 1977,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1217:0:16"
+            },
+            "scope": 1979,
+            "src": "1158:60:16",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1980,
+        "src": "160:1060:16",
+        "usedErrors": [],
+        "usedEvents": [
+          3189,
+          3198
+        ]
+      }
+    ],
+    "src": "32:1189:16"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.21+commit.d9974bed.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-11-10T11:03:19.821Z",
+  "devdoc": {
+    "events": {
+      "Approval(address,address,uint256)": {
+        "details": "Emitted when the allowance of a `spender` for an `owner` is set by a call to {approve}. `value` is the new allowance."
+      },
+      "Transfer(address,address,uint256)": {
+        "details": "Emitted when `value` tokens are moved from one account (`from`) to another (`to`). Note that `value` may be zero."
+      }
+    },
+    "kind": "dev",
+    "methods": {
+      "allowance(address,address)": {
+        "details": "Returns the remaining number of tokens that `spender` will be allowed to spend on behalf of `owner` through {transferFrom}. This is zero by default. This value changes when {approve} or {transferFrom} are called."
+      },
+      "approve(address,uint256)": {
+        "details": "Sets `amount` as the allowance of `spender` over the caller's tokens. Returns a boolean value indicating whether the operation succeeded. IMPORTANT: Beware that changing an allowance with this method brings the risk that someone may use both the old and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this race condition is to first reduce the spender's allowance to 0 and set the desired value afterwards: https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729 Emits an {Approval} event."
+      },
+      "balanceOf(address)": {
+        "details": "Returns the amount of tokens owned by `account`."
+      },
+      "burn(address,uint256)": {
+        "details": "this function decreases the total supply.",
+        "params": {
+          "account": "The address to burn tokens from.",
+          "amount": "The number of tokens to be burned."
+        }
+      },
+      "burn(uint256)": {
+        "details": "this function decreases the total supply.",
+        "params": {
+          "amount": "The number of tokens to be burned."
+        }
+      },
+      "burnFrom(address,uint256)": {
+        "details": "this function decreases the total supply.",
+        "params": {
+          "account": "The address to burn tokens from.",
+          "amount": "The number of tokens to be burned."
+        }
+      },
+      "mint(address,uint256)": {
+        "details": "this function increases the total supply.",
+        "params": {
+          "account": "The address to mint the new tokens to.",
+          "amount": "The number of tokens to be minted."
+        }
+      },
+      "totalSupply()": {
+        "details": "Returns the amount of tokens in existence."
+      },
+      "transfer(address,uint256)": {
+        "details": "Moves `amount` tokens from the caller's account to `to`. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event."
+      },
+      "transferFrom(address,address,uint256)": {
+        "details": "Moves `amount` tokens from `from` to `to` using the allowance mechanism. `amount` is then deducted from the caller's allowance. Returns a boolean value indicating whether the operation succeeded. Emits a {Transfer} event."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "burn(address,uint256)": {
+        "notice": "Burns tokens from a given address.."
+      },
+      "burn(uint256)": {
+        "notice": "Burns tokens from the sender."
+      },
+      "burnFrom(address,uint256)": {
+        "notice": "Burns tokens from a given address.."
+      },
+      "mint(address,uint256)": {
+        "notice": "Mints new tokens for a given address."
+      }
+    },
+    "version": 1
+  }
+}

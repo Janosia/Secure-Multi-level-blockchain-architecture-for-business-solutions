@@ -1,0 +1,735 @@
+{
+  "contractName": "IRouter",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "OnlyOffRamp",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "messageId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "sourceChainSelector",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bytes",
+              "name": "sender",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "token",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "amount",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct Client.EVMTokenAmount[]",
+              "name": "destTokenAmounts",
+              "type": "tuple[]"
+            }
+          ],
+          "internalType": "struct Client.Any2EVMMessage",
+          "name": "message",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint16",
+          "name": "gasForCallExactCheck",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint256",
+          "name": "gasLimit",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "receiver",
+          "type": "address"
+        }
+      ],
+      "name": "routeMessage",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        },
+        {
+          "internalType": "bytes",
+          "name": "retBytes",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint256",
+          "name": "gasUsed",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "destChainSelector",
+          "type": "uint64"
+        }
+      ],
+      "name": "getOnRamp",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "onRampAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint64",
+          "name": "sourceChainSelector",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "offRamp",
+          "type": "address"
+        }
+      ],
+      "name": "isOffRamp",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "isOffRamp",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"OnlyOffRamp\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"destChainSelector\",\"type\":\"uint64\"}],\"name\":\"getOnRamp\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"onRampAddress\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"sourceChainSelector\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"offRamp\",\"type\":\"address\"}],\"name\":\"isOffRamp\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"isOffRamp\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"messageId\",\"type\":\"bytes32\"},{\"internalType\":\"uint64\",\"name\":\"sourceChainSelector\",\"type\":\"uint64\"},{\"internalType\":\"bytes\",\"name\":\"sender\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"internalType\":\"struct Client.EVMTokenAmount[]\",\"name\":\"destTokenAmounts\",\"type\":\"tuple[]\"}],\"internalType\":\"struct Client.Any2EVMMessage\",\"name\":\"message\",\"type\":\"tuple\"},{\"internalType\":\"uint16\",\"name\":\"gasForCallExactCheck\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"gasLimit\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"routeMessage\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"},{\"internalType\":\"bytes\",\"name\":\"retBytes\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"gasUsed\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getOnRamp(uint64)\":{\"params\":{\"destChainSelector\":\"The destination chain Id to get the onRamp for.\"},\"returns\":{\"onRampAddress\":\"The address of the onRamp.\"}},\"isOffRamp(uint64,address)\":{\"params\":{\"offRamp\":\"The address of the offRamp to check.\",\"sourceChainSelector\":\"The source chain selector to check.\"}},\"routeMessage((bytes32,uint64,bytes,bytes,(address,uint256)[]),uint16,uint256,address)\":{\"details\":\"if the receiver is a contracts that signals support for CCIP execution through EIP-165. the contract is called. If not, only tokens are transferred.\",\"params\":{\"gasForCallExactCheck\":\"of params for exec\",\"gasLimit\":\"set of params for exec\",\"message\":\"Client.Any2EVMMessage struct.\",\"receiver\":\"set of params for exec\"},\"returns\":{\"gasUsed\":\"the gas used by the external customer call. Does not include any overhead.\",\"retBytes\":\"A bytes array containing return data form CCIP receiver.\",\"success\":\"A boolean value indicating whether the ccip message was received without errors.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getOnRamp(uint64)\":{\"notice\":\"Returns the configured onramp for a specific destination chain.\"},\"isOffRamp(uint64,address)\":{\"notice\":\"Return true if the given offRamp is a configured offRamp for the given source chain.\"},\"routeMessage((bytes32,uint64,bytes,bytes,(address,uint256)[]),uint16,uint256,address)\":{\"notice\":\"Route the message to its intended receiver contract.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IRouter.sol\":\"IRouter\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IRouter.sol\":{\"keccak256\":\"0x3035d3a01e424735d8a9a84b41135aefba7e7d6d88cbbdc42f5e4e4ad6b92da1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5ff87c9d51c4c07e234d489cdc75380d532d57579309b0967705e25628051296\",\"dweb:/ipfs/Qmcb34ajZeGTAtitCWo4RBpu12nCRjxGMmKMBsqVjiHesm\"]},\"@chainlink/contracts-ccip/src/v0.8/ccip/libraries/Client.sol\":{\"keccak256\":\"0xa1ce70adec733c80b230084b425a50caa852a99f17a7e43e38a96a975f11ce88\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://08db3aa57ceae13832c1bf323aa29afa2620fd5b5205ff0d56152bf323c56256\",\"dweb:/ipfs/QmUG2FSVP8xXVkdgFwNhc4YFDU7FNCaf1kKShiTaaHUddE\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nimport {Client} from \"../libraries/Client.sol\";\n\ninterface IRouter {\n  error OnlyOffRamp();\n\n  /// @notice Route the message to its intended receiver contract.\n  /// @param message Client.Any2EVMMessage struct.\n  /// @param gasForCallExactCheck of params for exec\n  /// @param gasLimit set of params for exec\n  /// @param receiver set of params for exec\n  /// @dev if the receiver is a contracts that signals support for CCIP execution through EIP-165.\n  /// the contract is called. If not, only tokens are transferred.\n  /// @return success A boolean value indicating whether the ccip message was received without errors.\n  /// @return retBytes A bytes array containing return data form CCIP receiver.\n  /// @return gasUsed the gas used by the external customer call. Does not include any overhead.\n  function routeMessage(\n    Client.Any2EVMMessage calldata message,\n    uint16 gasForCallExactCheck,\n    uint256 gasLimit,\n    address receiver\n  ) external returns (bool success, bytes memory retBytes, uint256 gasUsed);\n\n  /// @notice Returns the configured onramp for a specific destination chain.\n  /// @param destChainSelector The destination chain Id to get the onRamp for.\n  /// @return onRampAddress The address of the onRamp.\n  function getOnRamp(uint64 destChainSelector) external view returns (address onRampAddress);\n\n  /// @notice Return true if the given offRamp is a configured offRamp for the given source chain.\n  /// @param sourceChainSelector The source chain selector to check.\n  /// @param offRamp The address of the offRamp to check.\n  function isOffRamp(uint64 sourceChainSelector, address offRamp) external view returns (bool isOffRamp);\n}\n",
+  "sourcePath": "@chainlink\\contracts-ccip\\src\\v0.8\\ccip\\interfaces\\IRouter.sol",
+  "ast": {
+    "absolutePath": "@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IRouter.sol",
+    "exportedSymbols": {
+      "Client": [
+        315
+      ],
+      "IRouter": [
+        192
+      ]
+    },
+    "id": 193,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 150,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:4"
+      },
+      {
+        "absolutePath": "@chainlink/contracts-ccip/src/v0.8/ccip/libraries/Client.sol",
+        "file": "../libraries/Client.sol",
+        "id": 152,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 193,
+        "sourceUnit": 316,
+        "src": "57:47:4",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 151,
+              "name": "Client",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "referencedDeclaration": 315,
+              "src": "65:6:4",
+              "typeDescriptions": {}
+            },
+            "nameLocation": "-1:-1:-1"
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IRouter",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 192,
+        "linearizedBaseContracts": [
+          192
+        ],
+        "name": "IRouter",
+        "nameLocation": "116:7:4",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "errorSelector": "d2316ede",
+            "id": 154,
+            "name": "OnlyOffRamp",
+            "nameLocation": "134:11:4",
+            "nodeType": "ErrorDefinition",
+            "parameters": {
+              "id": 153,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "145:2:4"
+            },
+            "src": "128:20:4"
+          },
+          {
+            "documentation": {
+              "id": 155,
+              "nodeType": "StructuredDocumentation",
+              "src": "152:704:4",
+              "text": "@notice Route the message to its intended receiver contract.\n @param message Client.Any2EVMMessage struct.\n @param gasForCallExactCheck of params for exec\n @param gasLimit set of params for exec\n @param receiver set of params for exec\n @dev if the receiver is a contracts that signals support for CCIP execution through EIP-165.\n the contract is called. If not, only tokens are transferred.\n @return success A boolean value indicating whether the ccip message was received without errors.\n @return retBytes A bytes array containing return data form CCIP receiver.\n @return gasUsed the gas used by the external customer call. Does not include any overhead."
+            },
+            "functionSelector": "3cf97983",
+            "id": 173,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "routeMessage",
+            "nameLocation": "868:12:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 165,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 158,
+                  "mutability": "mutable",
+                  "name": "message",
+                  "nameLocation": "917:7:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 173,
+                  "src": "886:38:4",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Any2EVMMessage_$256_calldata_ptr",
+                    "typeString": "struct Client.Any2EVMMessage"
+                  },
+                  "typeName": {
+                    "id": 157,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 156,
+                      "name": "Client.Any2EVMMessage",
+                      "nameLocations": [
+                        "886:6:4",
+                        "893:14:4"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 256,
+                      "src": "886:21:4"
+                    },
+                    "referencedDeclaration": 256,
+                    "src": "886:21:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Any2EVMMessage_$256_storage_ptr",
+                      "typeString": "struct Client.Any2EVMMessage"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 160,
+                  "mutability": "mutable",
+                  "name": "gasForCallExactCheck",
+                  "nameLocation": "937:20:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 173,
+                  "src": "930:27:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  },
+                  "typeName": {
+                    "id": 159,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "930:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 162,
+                  "mutability": "mutable",
+                  "name": "gasLimit",
+                  "nameLocation": "971:8:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 173,
+                  "src": "963:16:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 161,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "963:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 164,
+                  "mutability": "mutable",
+                  "name": "receiver",
+                  "nameLocation": "993:8:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 173,
+                  "src": "985:16:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 163,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "985:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "880:125:4"
+            },
+            "returnParameters": {
+              "id": 172,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 167,
+                  "mutability": "mutable",
+                  "name": "success",
+                  "nameLocation": "1029:7:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 173,
+                  "src": "1024:12:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 166,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1024:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 169,
+                  "mutability": "mutable",
+                  "name": "retBytes",
+                  "nameLocation": "1051:8:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 173,
+                  "src": "1038:21:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 168,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1038:5:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 171,
+                  "mutability": "mutable",
+                  "name": "gasUsed",
+                  "nameLocation": "1069:7:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 173,
+                  "src": "1061:15:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 170,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1061:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1023:54:4"
+            },
+            "scope": 192,
+            "src": "859:219:4",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 174,
+              "nodeType": "StructuredDocumentation",
+              "src": "1082:209:4",
+              "text": "@notice Returns the configured onramp for a specific destination chain.\n @param destChainSelector The destination chain Id to get the onRamp for.\n @return onRampAddress The address of the onRamp."
+            },
+            "functionSelector": "a8d87a3b",
+            "id": 181,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOnRamp",
+            "nameLocation": "1303:9:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 177,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 176,
+                  "mutability": "mutable",
+                  "name": "destChainSelector",
+                  "nameLocation": "1320:17:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 181,
+                  "src": "1313:24:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 175,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1313:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1312:26:4"
+            },
+            "returnParameters": {
+              "id": 180,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 179,
+                  "mutability": "mutable",
+                  "name": "onRampAddress",
+                  "nameLocation": "1370:13:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 181,
+                  "src": "1362:21:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 178,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1362:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1361:23:4"
+            },
+            "scope": 192,
+            "src": "1294:91:4",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 182,
+              "nodeType": "StructuredDocumentation",
+              "src": "1389:223:4",
+              "text": "@notice Return true if the given offRamp is a configured offRamp for the given source chain.\n @param sourceChainSelector The source chain selector to check.\n @param offRamp The address of the offRamp to check."
+            },
+            "functionSelector": "83826b2b",
+            "id": 191,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isOffRamp",
+            "nameLocation": "1624:9:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 187,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 184,
+                  "mutability": "mutable",
+                  "name": "sourceChainSelector",
+                  "nameLocation": "1641:19:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 191,
+                  "src": "1634:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 183,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1634:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 186,
+                  "mutability": "mutable",
+                  "name": "offRamp",
+                  "nameLocation": "1670:7:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 191,
+                  "src": "1662:15:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 185,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1662:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1633:45:4"
+            },
+            "returnParameters": {
+              "id": 190,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 189,
+                  "mutability": "mutable",
+                  "name": "isOffRamp",
+                  "nameLocation": "1707:9:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 191,
+                  "src": "1702:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 188,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1702:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1701:16:4"
+            },
+            "scope": 192,
+            "src": "1615:103:4",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 193,
+        "src": "106:1614:4",
+        "usedErrors": [
+          154
+        ],
+        "usedEvents": []
+      }
+    ],
+    "src": "32:1689:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.21+commit.d9974bed.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-11-10T11:03:19.644Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "getOnRamp(uint64)": {
+        "params": {
+          "destChainSelector": "The destination chain Id to get the onRamp for."
+        },
+        "returns": {
+          "onRampAddress": "The address of the onRamp."
+        }
+      },
+      "isOffRamp(uint64,address)": {
+        "params": {
+          "offRamp": "The address of the offRamp to check.",
+          "sourceChainSelector": "The source chain selector to check."
+        }
+      },
+      "routeMessage((bytes32,uint64,bytes,bytes,(address,uint256)[]),uint16,uint256,address)": {
+        "details": "if the receiver is a contracts that signals support for CCIP execution through EIP-165. the contract is called. If not, only tokens are transferred.",
+        "params": {
+          "gasForCallExactCheck": "of params for exec",
+          "gasLimit": "set of params for exec",
+          "message": "Client.Any2EVMMessage struct.",
+          "receiver": "set of params for exec"
+        },
+        "returns": {
+          "gasUsed": "the gas used by the external customer call. Does not include any overhead.",
+          "retBytes": "A bytes array containing return data form CCIP receiver.",
+          "success": "A boolean value indicating whether the ccip message was received without errors."
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "getOnRamp(uint64)": {
+        "notice": "Returns the configured onramp for a specific destination chain."
+      },
+      "isOffRamp(uint64,address)": {
+        "notice": "Return true if the given offRamp is a configured offRamp for the given source chain."
+      },
+      "routeMessage((bytes32,uint64,bytes,bytes,(address,uint256)[]),uint16,uint256,address)": {
+        "notice": "Route the message to its intended receiver contract."
+      }
+    },
+    "version": 1
+  }
+}

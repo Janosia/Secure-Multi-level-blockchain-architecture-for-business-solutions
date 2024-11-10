@@ -1,0 +1,211 @@
+{
+  "contractName": "IERC677Receiver",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "onTokenTransfer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onTokenTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@chainlink/contracts-ccip/src/v0.8/shared/interfaces/IERC677Receiver.sol\":\"IERC677Receiver\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@chainlink/contracts-ccip/src/v0.8/shared/interfaces/IERC677Receiver.sol\":{\"keccak256\":\"0x5f9ee31598e2250815033c2f4e1e7e747f917815378938505063df1d4ae603ec\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://15aaf96a97cdeded001c705795bfd5c12bce211ed73cc6593a02dc8214c72124\",\"dweb:/ipfs/Qmab5F6iSFyKGUpR1H2pqotNeE2FHEqbLPSr3zQ3xtNjtg\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.6;\n\ninterface IERC677Receiver {\n  function onTokenTransfer(address sender, uint256 amount, bytes calldata data) external;\n}\n",
+  "sourcePath": "@chainlink\\contracts-ccip\\src\\v0.8\\shared\\interfaces\\IERC677Receiver.sol",
+  "ast": {
+    "absolutePath": "@chainlink/contracts-ccip/src/v0.8/shared/interfaces/IERC677Receiver.sol",
+    "exportedSymbols": {
+      "IERC677Receiver": [
+        1926
+      ]
+    },
+    "id": 1927,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1916,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:14"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IERC677Receiver",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 1926,
+        "linearizedBaseContracts": [
+          1926
+        ],
+        "name": "IERC677Receiver",
+        "nameLocation": "67:15:14",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "a4c0ed36",
+            "id": 1925,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onTokenTransfer",
+            "nameLocation": "96:15:14",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1923,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1918,
+                  "mutability": "mutable",
+                  "name": "sender",
+                  "nameLocation": "120:6:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1925,
+                  "src": "112:14:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1917,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "112:7:14",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1920,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "136:6:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1925,
+                  "src": "128:14:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1919,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "128:7:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1922,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "159:4:14",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1925,
+                  "src": "144:19:14",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 1921,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "144:5:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "111:53:14"
+            },
+            "returnParameters": {
+              "id": 1924,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "173:0:14"
+            },
+            "scope": 1926,
+            "src": "87:87:14",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1927,
+        "src": "57:119:14",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "32:145:14"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.21+commit.d9974bed.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-11-10T11:03:19.815Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

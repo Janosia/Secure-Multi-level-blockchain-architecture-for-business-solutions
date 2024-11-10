@@ -1,0 +1,161 @@
+{
+  "contractName": "IGetCCIPAdmin",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "getCCIPAdmin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getCCIPAdmin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getCCIPAdmin()\":{\"details\":\"This method is named to never conflict with existing methods.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getCCIPAdmin()\":{\"notice\":\"Returns the admin of the token.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IGetCCIPAdmin.sol\":\"IGetCCIPAdmin\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IGetCCIPAdmin.sol\":{\"keccak256\":\"0x915794040125fbb75110b20e60c3e6b584d92f57d40b77266bc37d31dae3bd29\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a29c372536049088ee5c0c0618e532826f2e027adf07fe6a656c08c7b057f152\",\"dweb:/ipfs/QmYaGB6PFdysgkvJR8gB6LVNQzfoF3pT5J5KMViTYLxMiN\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ninterface IGetCCIPAdmin {\n  /// @notice Returns the admin of the token.\n  /// @dev This method is named to never conflict with existing methods.\n  function getCCIPAdmin() external view returns (address);\n}\n",
+  "sourcePath": "@chainlink\\contracts-ccip\\src\\v0.8\\ccip\\interfaces\\IGetCCIPAdmin.sol",
+  "ast": {
+    "absolutePath": "@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IGetCCIPAdmin.sol",
+    "exportedSymbols": {
+      "IGetCCIPAdmin": [
+        139
+      ]
+    },
+    "id": 140,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 132,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IGetCCIPAdmin",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 139,
+        "linearizedBaseContracts": [
+          139
+        ],
+        "name": "IGetCCIPAdmin",
+        "nameLocation": "67:13:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 133,
+              "nodeType": "StructuredDocumentation",
+              "src": "85:116:2",
+              "text": "@notice Returns the admin of the token.\n @dev This method is named to never conflict with existing methods."
+            },
+            "functionSelector": "8fd6a6ac",
+            "id": 138,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCCIPAdmin",
+            "nameLocation": "213:12:2",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 134,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "225:2:2"
+            },
+            "returnParameters": {
+              "id": 137,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 136,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 138,
+                  "src": "251:7:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 135,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "251:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "250:9:2"
+            },
+            "scope": 139,
+            "src": "204:56:2",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 140,
+        "src": "57:205:2",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "32:231:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.21+commit.d9974bed.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-11-10T11:03:19.636Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "getCCIPAdmin()": {
+        "details": "This method is named to never conflict with existing methods."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "getCCIPAdmin()": {
+        "notice": "Returns the admin of the token."
+      }
+    },
+    "version": 1
+  }
+}

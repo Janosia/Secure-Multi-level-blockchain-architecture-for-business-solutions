@@ -1,0 +1,161 @@
+{
+  "contractName": "IOwner",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"owner()\":{\"details\":\"This method is named to match with the OpenZeppelin Ownable contract.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"owner()\":{\"notice\":\"Returns the owner of the contract.\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IOwner.sol\":\"IOwner\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IOwner.sol\":{\"keccak256\":\"0x53acc313bc9fd39590c1a0a770bd311c85d803741d361319393c6bcfff5ed2a6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5dc6555e640a7db6118a248b04a29408b044df5762580d39ddc7b96631ec097d\",\"dweb:/ipfs/QmPGinQtdFghDtaVnjMVnHy1K17LEy4cNuRarxQLhdtKv8\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ninterface IOwner {\n  /// @notice Returns the owner of the contract.\n  /// @dev This method is named to match with the OpenZeppelin Ownable contract.\n  function owner() external view returns (address);\n}\n",
+  "sourcePath": "@chainlink\\contracts-ccip\\src\\v0.8\\ccip\\interfaces\\IOwner.sol",
+  "ast": {
+    "absolutePath": "@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IOwner.sol",
+    "exportedSymbols": {
+      "IOwner": [
+        148
+      ]
+    },
+    "id": 149,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 141,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:3"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IOwner",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 148,
+        "linearizedBaseContracts": [
+          148
+        ],
+        "name": "IOwner",
+        "nameLocation": "67:6:3",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 142,
+              "nodeType": "StructuredDocumentation",
+              "src": "78:127:3",
+              "text": "@notice Returns the owner of the contract.\n @dev This method is named to match with the OpenZeppelin Ownable contract."
+            },
+            "functionSelector": "8da5cb5b",
+            "id": 147,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "owner",
+            "nameLocation": "217:5:3",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 143,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "222:2:3"
+            },
+            "returnParameters": {
+              "id": 146,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 145,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 147,
+                  "src": "248:7:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 144,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "248:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "247:9:3"
+            },
+            "scope": 148,
+            "src": "208:49:3",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 149,
+        "src": "57:202:3",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "32:228:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.21+commit.d9974bed.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-11-10T11:03:19.640Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "owner()": {
+        "details": "This method is named to match with the OpenZeppelin Ownable contract."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "owner()": {
+        "notice": "Returns the owner of the contract."
+      }
+    },
+    "version": 1
+  }
+}

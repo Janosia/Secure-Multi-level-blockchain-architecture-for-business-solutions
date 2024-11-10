@@ -1,0 +1,429 @@
+{
+  "contractName": "IERC677",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "transferAndCall",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"transferAndCall\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"transferAndCall(address,uint256,bytes)\":{\"params\":{\"amount\":\"The amount of tokens to be transferred\",\"data\":\"bytes Additional data with no specified format, sent in call to `to`\",\"to\":\"The address which you want to transfer to\"},\"returns\":{\"_0\":\"true unless throwing\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"transferAndCall(address,uint256,bytes)\":{\"notice\":\"Transfer tokens from `msg.sender` to another address and then call `onTransferReceived` on receiver\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@chainlink/contracts-ccip/src/v0.8/shared/token/ERC677/IERC677.sol\":\"IERC677\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@chainlink/contracts-ccip/src/v0.8/shared/token/ERC677/IERC677.sol\":{\"keccak256\":\"0x771321adbdab6bec7d27bcd8a46dfea813f1c97d97a7a671fe35cd87744daee4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://547d666afd4ef831cad69ba1627d12fcaadab1eab9456771e53f9e88749bd54e\",\"dweb:/ipfs/QmY37ZFyBCKcwVNBgyryrcvmVcJKsfCGpzxF65hAWSNqgH\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ninterface IERC677 {\n  event Transfer(address indexed from, address indexed to, uint256 value, bytes data);\n\n  /// @notice Transfer tokens from `msg.sender` to another address and then call `onTransferReceived` on receiver\n  /// @param to The address which you want to transfer to\n  /// @param amount The amount of tokens to be transferred\n  /// @param data bytes Additional data with no specified format, sent in call to `to`\n  /// @return true unless throwing\n  function transferAndCall(address to, uint256 amount, bytes memory data) external returns (bool);\n}\n",
+  "sourcePath": "@chainlink\\contracts-ccip\\src\\v0.8\\shared\\token\\ERC677\\IERC677.sol",
+  "ast": {
+    "absolutePath": "@chainlink/contracts-ccip/src/v0.8/shared/token/ERC677/IERC677.sol",
+    "exportedSymbols": {
+      "IERC677": [
+        2590
+      ]
+    },
+    "id": 2591,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2567,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:19"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IERC677",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 2590,
+        "linearizedBaseContracts": [
+          2590
+        ],
+        "name": "IERC677",
+        "nameLocation": "67:7:19",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "eventSelector": "e19260aff97b920c7df27010903aeb9c8d2be5d310a2c67824cf3f15396e4c16",
+            "id": 2577,
+            "name": "Transfer",
+            "nameLocation": "85:8:19",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2576,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2569,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "from",
+                  "nameLocation": "110:4:19",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2577,
+                  "src": "94:20:19",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2568,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "94:7:19",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2571,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "132:2:19",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2577,
+                  "src": "116:18:19",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2570,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "116:7:19",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2573,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "144:5:19",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2577,
+                  "src": "136:13:19",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2572,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "136:7:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2575,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "157:4:19",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2577,
+                  "src": "151:10:19",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 2574,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "151:5:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "93:69:19"
+            },
+            "src": "79:84:19"
+          },
+          {
+            "documentation": {
+              "id": 2578,
+              "nodeType": "StructuredDocumentation",
+              "src": "167:350:19",
+              "text": "@notice Transfer tokens from `msg.sender` to another address and then call `onTransferReceived` on receiver\n @param to The address which you want to transfer to\n @param amount The amount of tokens to be transferred\n @param data bytes Additional data with no specified format, sent in call to `to`\n @return true unless throwing"
+            },
+            "functionSelector": "4000aea0",
+            "id": 2589,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferAndCall",
+            "nameLocation": "529:15:19",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2585,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2580,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "553:2:19",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2589,
+                  "src": "545:10:19",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2579,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "545:7:19",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2582,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "565:6:19",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2589,
+                  "src": "557:14:19",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2581,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "557:7:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2584,
+                  "mutability": "mutable",
+                  "name": "data",
+                  "nameLocation": "586:4:19",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2589,
+                  "src": "573:17:19",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 2583,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "573:5:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "544:47:19"
+            },
+            "returnParameters": {
+              "id": 2588,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2587,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2589,
+                  "src": "610:4:19",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2586,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "610:4:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "609:6:19"
+            },
+            "scope": 2590,
+            "src": "520:96:19",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2591,
+        "src": "57:561:19",
+        "usedErrors": [],
+        "usedEvents": [
+          2577
+        ]
+      }
+    ],
+    "src": "32:587:19"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.21+commit.d9974bed.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-11-10T11:03:19.901Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "transferAndCall(address,uint256,bytes)": {
+        "params": {
+          "amount": "The amount of tokens to be transferred",
+          "data": "bytes Additional data with no specified format, sent in call to `to`",
+          "to": "The address which you want to transfer to"
+        },
+        "returns": {
+          "_0": "true unless throwing"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "transferAndCall(address,uint256,bytes)": {
+        "notice": "Transfer tokens from `msg.sender` to another address and then call `onTransferReceived` on receiver"
+      }
+    },
+    "version": 1
+  }
+}
